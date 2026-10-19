@@ -1,0 +1,22 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "Production Express app for DevOps with Docker - Exercise 3.1 & 3.2 Deployment Pipeline",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "devops",
+    "docker",
+    "github-actions",
+    "watchtower",
+    "ci-cd",
+    "mooc-fi"
+  ],
+  "author": "Sergio Andrés Ipuz Saavedra (@Sais-gallego)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

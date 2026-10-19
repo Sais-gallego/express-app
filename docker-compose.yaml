@@ -1,0 +1,28 @@
+services:
+  express-app:
+    image: saisgallego/express-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: express-app
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - APP_VERSION=2.1.0
+    restart: unless-stopped
+
+  watchtower:
+    image: nickfedor/watchtower:latest
+    container_name: watchtower
+    environment:
+      # Poll Docker Hub for updated image digests every 60 seconds
+      - WATCHTOWER_POLL_INTERVAL=60
+      # Remove old images after updating to save disk space
+      - WATCHTOWER_CLEANUP=true
+      # Include stopped containers or watch specific container
+      - WATCHTOWER_INCLUDE_STOPPED=true
+    volumes:
+      # Mount host Docker daemon socket to control container lifecycles
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
